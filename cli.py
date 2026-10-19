@@ -1,7 +1,6 @@
 """
 ================================================================================
-FLIXQUEST CUEVANA - CONSOLA INTERACTIVA EDUCATIVA EN PYTHON
-Sesion 6: Web Scraping con Python y Selenium  —  Universidad Surcolombiana
+FLIXQUEST — Sesion 6: Web Scraping con Python y Selenium
 ================================================================================
 """
 
@@ -9,8 +8,8 @@ import sys
 import os
 from colorama import init, Fore, Style
 
-# Importar funciones del scraper del profesor
-from cuevana_scraper_profesor import (
+# Importar funciones del scraper
+from scraper import (
     buscar_contenido,
     listar_catalogo,
     extraer_streams,
@@ -23,40 +22,13 @@ from downloader import descargar_video
 init(autoreset=True)
 
 
-ESCUDO_USCO = r"""
-          _______
-        _/       \_
-       / |  . . | \
-      /  |  | |  |  \
-     /   |  |U|  |   \
-    |    | /| |\  |    |
-    |    |/ | | \ |    |
-    |    '--|_|--'|    |
-     \    |_____| /   /
-      \   |     | /  /
-       \  |_____|/  /
-        \_         _/
-          ---------
-"""
-
-
 def banner():
-    print(Fore.RED + Style.BRIGHT + ESCUDO_USCO)
-    print(Fore.YELLOW + Style.BRIGHT +
-          "        UNIVERSIDAD SURCOLOMBIANA")
-    print(Fore.WHITE +
-          "        Programa de Ingenieria de Sistemas\n")
-    print(Fore.CYAN + Style.BRIGHT +
-          "    +--------------------------------------------------+")
-    print(Fore.CYAN + Style.BRIGHT +
-          "    |  SESION 6  -  Web Scraping con Python y Selenium |")
-    print(Fore.CYAN + Style.BRIGHT +
-          "    |  FlixQuest - Extraccion, Automatizacion y        |")
-    print(Fore.CYAN + Style.BRIGHT +
-          "    |  Streaming Local                                  |")
-    print(Fore.CYAN + Style.BRIGHT +
-          "    +--------------------------------------------------+\n" +
-          Style.RESET_ALL)
+    print(Fore.CYAN + Style.BRIGHT + """
+    +----------------------------------------------------------+
+    |   SESION 6  —  Web Scraping con Python y Selenium        |
+    |   FlixQuest  |  Extraccion, Automatizacion y Streaming   |
+    +----------------------------------------------------------+
+    """ + Style.RESET_ALL)
 
 
 def menu_principal():

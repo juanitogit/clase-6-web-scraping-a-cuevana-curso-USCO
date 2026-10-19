@@ -32,15 +32,14 @@ El objetivo no es el sitio en si, sino aprender las tecnicas reales que se usan 
 ```
 FlixQuest-Python-Cuevana/
 |
-+-- cli.py                       Interfaz de terminal: menu, paginacion, busqueda
-+-- cuevana_scraper_alumno.py    Scraper simplificado con comentarios paso a paso
-+-- cuevana_scraper_profesor.py  Scraper completo con explicaciones tecnicas
-+-- downloader.py                Descargador de video con barra de progreso
-+-- player_server.py             Servidor HTTP local (lee player.html y launch.html)
-+-- player.html                  Pagina del selector de servidores (CSS + HTML + JS)
-+-- launch.html                  Pantalla de transicion antes de abrir el proveedor
-+-- ejecutar_cli.bat             Lanzador de Windows (doble clic para iniciar)
-+-- downloads/                   Carpeta donde se guardan los videos descargados
++-- cli.py                  Interfaz de terminal: menu, paginacion, busqueda
++-- scraper.py              Scraper con Selenium: extrae catalogo y streams de Cuevana
++-- downloader.py           Descargador de video con barra de progreso
++-- player_server.py        Servidor HTTP local (lee player.html y launch.html)
++-- player.html             Pagina del selector de servidores (CSS + HTML + JS)
++-- launch.html             Pantalla de transicion antes de abrir el proveedor
++-- ejecutar_cli.bat        Lanzador de Windows (doble clic para iniciar)
++-- downloads/              Carpeta donde se guardan los videos descargados
 ```
 
 ---
@@ -119,7 +118,7 @@ python cli.py
 
 El proyecto esta dividido en capas con responsabilidades separadas:
 
-### Capa 1 — Scraping (`cuevana_scraper_alumno.py`)
+### Capa 1 — Scraping (`scraper.py`)
 
 Selenium abre Chrome en modo sin cabeza (invisible) y navega a Cuevana. Dado que el sitio carga su catalogo con JavaScript de forma dinamica, se usa `WebDriverWait` para esperar a que los elementos aparezcan en el DOM antes de leerlos.
 
