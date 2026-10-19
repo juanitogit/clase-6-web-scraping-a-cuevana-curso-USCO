@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlixQuest — Cargando...</title>
+
+    <!-- =====================================================================
+         CSS — Pantalla de transición con spinner animado
+    ====================================================================== -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #090b10;
+            color: #94a3b8;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Contenedor centrado del spinner */
+        .cargando {
+            text-align: center;
+        }
+
+        /* Círculo giratorio animado */
+        .spinner {
+            width: 52px;
+            height: 52px;
+            border: 4px solid #1e293b;        /* borde gris oscuro */
+            border-top-color: #4f46e5;         /* un lado morado → efecto giro */
+            border-radius: 50%;
+            animation: girar 0.8s linear infinite;
+            margin: 0 auto 18px;
+        }
+
+        /* Keyframe: rotación completa cada 0.8s */
+        @keyframes girar {
+            to { transform: rotate(360deg); }
+        }
+
+        .titulo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .subtitulo {
+            font-size: 0.82rem;
+            margin-top: 8px;
+            color: #475569;
+        }
+
+        /* Enlace de respaldo si el redirect falla */
+        .enlace-manual {
+            display: inline-block;
+            margin-top: 20px;
+            color: #6366f1;
+            font-size: 0.78rem;
+            text-decoration: none;
+        }
+        .enlace-manual:hover {
+            color: #a5b4fc;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cargando">
+        <div class="spinner"></div>
+        <div class="titulo">Cargando reproductor...</div>
+        <div class="subtitulo">Bloqueando publicidad y popups</div>
+        <a class="enlace-manual" href="{{URL_DESTINO}}">
+            Clic aquí si no redirige automáticamente
+        </a>
+    </div>
+
+    <!-- =====================================================================
+         JS — Bloqueo de popups y redirección al proveedor
+    ====================================================================== -->
+    <script>
+        /* 1. Bloquear window.open ANTES de redirigir al proveedor.
+              Aunque esta página es solo un spinner, prevenimos
+              cualquier script externo que pudiera inyectarse. */
+        window.open = function(url, target, features) {
+            console.warn('[FlixQuest Shield] Popup bloqueado:', url);
+            return null;
+        };
+
+        /* 2. Redirigir al proveedor de streaming.
+              El Python reemplaza {{URL_DESTINO}} con la URL real
+              (SmashyStream, VidSrc, AutoEmbed, etc.).
+              600ms de delay para que el usuario vea el spinner. */
+        setTimeout(function() {
+            window.location.href = "{{URL_DESTINO}}";
+        }, 600);
+    </script>
+
+</body>
+</html>
