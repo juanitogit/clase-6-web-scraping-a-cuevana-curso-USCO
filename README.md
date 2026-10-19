@@ -63,11 +63,9 @@ FlixQuest-Python-Cuevana/
 Abre una terminal (CMD o PowerShell en Windows) y ejecuta:
 
 ```bash
-git clone https://github.com/TU_USUARIO/flixquest-python-cuevana.git
-cd flixquest-python-cuevana
+git clone https://github.com/juanitogit/clase-6-web-scraping-a-cuevana-curso-USCO.git
+cd clase-6-web-scraping-a-cuevana-curso-USCO
 ```
-
-> Reemplaza `TU_USUARIO` con el nombre de usuario de GitHub que te indique el profesor.
 
 ### 2. Crear un entorno virtual (recomendado)
 
@@ -94,14 +92,13 @@ Cuando el entorno este activo veras `(venv)` al inicio de la linea en la termina
 ### 3. Instalar dependencias
 
 ```bash
-pip install selenium beautifulsoup4 requests colorama
+pip install selenium requests colorama
 ```
 
 | Libreria | Para que se usa |
 |----------|----------------|
-| `selenium` | Controlar Chrome para cargar paginas con JavaScript |
-| `beautifulsoup4` | Parsear HTML descargado |
-| `requests` | Hacer peticiones HTTP simples |
+| `selenium` | Controlar Chrome para navegar paginas con JavaScript dinamico |
+| `requests` | Hacer peticiones HTTP simples (descarga de video) |
 | `colorama` | Colores en la terminal en Windows |
 
 ### 4. Ejecutar el proyecto
@@ -150,34 +147,6 @@ Descarga el video en fragmentos de 8 KB en lugar de cargarlo todo en memoria. Mu
 
 ---
 
-## Limitaciones tecnicas
-
-Estas limitaciones son intencionalmente parte del material de estudio. El profesor las explicara en detalle durante las clases.
-
-### Proteccion de sandbox en iframes
-
-Algunos proveedores de streaming (como VidSrc) detectan cuando su reproductor se carga dentro de un `<iframe>` con el atributo `sandbox`. Al detectarlo, muestran un mensaje de error y bloquean la reproduccion. Esta deteccion la hace un script llamado `sbx.js` que comprueba si el elemento padre tiene el atributo `sandbox` en el DOM.
-
-Como consecuencia, el proyecto no puede usar iframes restringidos para aislar el contenido. En cambio, redirige directamente al proveedor en la pestana del usuario.
-
-### Bloqueo de popups por Chrome
-
-Chrome bloquea automaticamente las llamadas a `window.open()` que no son iniciadas directamente por un gesto del usuario (como un clic). Esto significa que los anuncios que intentan abrir pestanas nuevas de forma automatica son bloqueados sin necesidad de codigo adicional.
-
-### CORS (Cross-Origin Resource Sharing)
-
-Si un servidor local en `localhost` intenta cargar recursos (scripts, estilos) de un dominio externo dentro de un iframe, el navegador bloquea esas peticiones por la politica de mismo origen. Por esta razon el proyecto no utiliza un proxy inverso para servir el contenido del proveedor desde localhost.
-
-### Cambios en la estructura del sitio
-
-El selector CSS que se usa para encontrar elementos en Cuevana puede dejar de funcionar si el sitio actualiza su estructura HTML. Cuando esto ocurra, sera necesario inspeccionar el DOM con las herramientas de desarrollador del navegador y actualizar el selector en el scraper.
-
-### Selenium es lento por diseno
-
-Selenium controla un navegador real, lo que lo hace considerablemente mas lento que una libreria como `requests`. Es la herramienta correcta para sitios con JavaScript dinamico, pero no para scraping de alto volumen.
-
----
-
 ## Preguntas frecuentes
 
 **El navegador no abre o da error de ChromeDriver**
@@ -206,7 +175,7 @@ En la carpeta `downloads/` dentro del proyecto.
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/TU_USUARIO/flixquest-python-cuevana.git
+git clone https://github.com/juanitogit/clase-6-web-scraping-a-cuevana-curso-USCO.git
 
 # Crear y activar entorno virtual
 python -m venv venv
@@ -214,7 +183,7 @@ venv\Scripts\activate        # Windows
 source venv/bin/activate     # Mac / Linux
 
 # Instalar dependencias
-pip install selenium beautifulsoup4 requests colorama
+pip install selenium requests colorama
 
 # Iniciar la aplicacion
 python cli.py

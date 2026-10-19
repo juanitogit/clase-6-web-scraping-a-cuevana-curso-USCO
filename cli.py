@@ -1,7 +1,7 @@
 """
 ================================================================================
 FLIXQUEST CUEVANA - CONSOLA INTERACTIVA EDUCATIVA EN PYTHON
-Navegación de Catálogo, Búsquedas, Streaming HLS en Navegador y Descargas
+Sesion 6: Web Scraping con Python y Selenium  —  Universidad Surcolombiana
 ================================================================================
 """
 
@@ -23,23 +23,50 @@ from downloader import descargar_video
 init(autoreset=True)
 
 
+ESCUDO_USCO = r"""
+          _______
+        _/       \_
+       / |  . . | \
+      /  |  | |  |  \
+     /   |  |U|  |   \
+    |    | /| |\  |    |
+    |    |/ | | \ |    |
+    |    '--|_|--'|    |
+     \    |_____| /   /
+      \   |     | /  /
+       \  |_____|/  /
+        \_         _/
+          ---------
+"""
+
+
 def banner():
-    print(Fore.CYAN + Style.BRIGHT + """
-  ╔═══════════════════════════════════════════════════════════════════════╗
-  ║   🎬 FLIXQUEST CUEVANA - PYTHON SCRAPING & STREAMING TERMINAL UI      ║
-  ║         Curso Educativo de Web Scraping y Extracción Multimedia       ║
-  ╚═══════════════════════════════════════════════════════════════════════╝
-    """)
+    print(Fore.RED + Style.BRIGHT + ESCUDO_USCO)
+    print(Fore.YELLOW + Style.BRIGHT +
+          "        UNIVERSIDAD SURCOLOMBIANA")
+    print(Fore.WHITE +
+          "        Programa de Ingenieria de Sistemas\n")
+    print(Fore.CYAN + Style.BRIGHT +
+          "    +--------------------------------------------------+")
+    print(Fore.CYAN + Style.BRIGHT +
+          "    |  SESION 6  -  Web Scraping con Python y Selenium |")
+    print(Fore.CYAN + Style.BRIGHT +
+          "    |  FlixQuest - Extraccion, Automatizacion y        |")
+    print(Fore.CYAN + Style.BRIGHT +
+          "    |  Streaming Local                                  |")
+    print(Fore.CYAN + Style.BRIGHT +
+          "    +--------------------------------------------------+\n" +
+          Style.RESET_ALL)
 
 
 def menu_principal():
-    print(Fore.YELLOW + Style.BRIGHT + "--- MENÚ PRINCIPAL ---")
-    print(f" {Fore.GREEN}[1]{Fore.RESET} 🔍 Buscar película o serie por título")
-    print(f" {Fore.GREEN}[2]{Fore.RESET} 🎬 Explorar Catálogo de Películas (Paginado)")
-    print(f" {Fore.GREEN}[3]{Fore.RESET} ✨ Explorar Estrenos Recientes")
-    print(f" {Fore.GREEN}[4]{Fore.RESET} 📺 Explorar Catálogo de Series TV")
-    print(f" {Fore.GREEN}[5]{Fore.RESET} 📖 Explicación Técnica: ¿Por qué duran poco los videos?")
-    print(f" {Fore.RED}[0]{Fore.RESET} 🚪 Salir")
+    print(Fore.YELLOW + Style.BRIGHT + "--- MENU PRINCIPAL ---")
+    print(f" {Fore.GREEN}[1]{Fore.RESET} Buscar pelicula o serie por titulo")
+    print(f" {Fore.GREEN}[2]{Fore.RESET} Explorar Catalogo de Peliculas (Paginado)")
+    print(f" {Fore.GREEN}[3]{Fore.RESET} Explorar Estrenos Recientes")
+    print(f" {Fore.GREEN}[4]{Fore.RESET} Explorar Catalogo de Series TV")
+    print(f" {Fore.GREEN}[5]{Fore.RESET} Explicacion Tecnica del Proyecto")
+    print(f" {Fore.RED}[0]{Fore.RESET} Salir")
     print("-" * 50)
 
 
